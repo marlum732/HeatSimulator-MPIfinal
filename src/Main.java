@@ -8,8 +8,8 @@ public class Main {
 
         int width = 1024;
         int height = 1024;
-        int nPoints = 1000;
-        int seed = 234;
+        int nPoints = 1024;
+        int seed = 777;
 
         long startTime = System.currentTimeMillis();
 
@@ -30,7 +30,7 @@ public class Main {
                 temperature[x][y] = 1;
             }
 
-
+        //idea to have a master procesor (rank0) and worker processors performing calculations was made by ChatGPT-An AI language model developed by OpenAI
         //chunk distribution-breaking temperature array
             for (int rank = 1; rank<size ; rank++) { //all other workers
                 int startRow = (rank-1) * chunkSize;
@@ -104,7 +104,7 @@ public class Main {
                     }
                 }
             }
-            System.out.println("Execution time: " + (System.currentTimeMillis() - startTime) + " ms");
+            System.out.println((System.currentTimeMillis() - startTime));
         }
 
         MPI.Finalize();
